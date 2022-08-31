@@ -2,25 +2,25 @@ subproceso multi<- res1(d,h,s)
 	multi<-s*h*(d*2+1)
 finsubproceso
 subproceso multo<- res2(d,h,s,fe)
-	multo<-s*h*(d*2+1)*(fe*2)
+	multo<-s*h*(d*2+1)+(fe*2*s)
 finsubproceso
 subproceso mul<-res3(d,h,s,sa)
-	mul<-s*h*(d*2+1)*(sa*2)
+	mul<-s*h*(d*2+1)+(sa*2*s)
 finsubproceso
 subproceso mol<-res4(d,h,s,sa,fe)
-	mol<-s*h*(d*2+1)*(sa*2)*(fe*2)
+	mol<-s*h*(d*2+1)+(sa*2*s)+(fe*2*s)
 finsubproceso
 subproceso molp<-res5(d,h,s,he)
-	molp<-s*h*(d*2+1)*(he*2)
+	molp<-s*h*(d*2+1)+(he*s)
 finsubproceso
 subproceso molm<-res6(d,h,s,fe,he)
-	molm<-s*h*(d*2+1)*(fe*2)*(he*2)
+	molm<-s*h*(d*2+1)+(fe*2*s)+(he*s)
 finsubproceso
 subproceso mom<-res7(d,h,s,sa,he)
-	mom<-s*h*(d*2+1)*(sa*2)*(he*2)
+	mom<-s*h*(d*2+1)+(sa*2*s)+(he*s)
 finsubproceso
 subproceso mok<-res8(d,h,s,sa,he,fe)
-	mok<-s*h*(d*2+1)*(sa*2)*(he*2)*(fe*2)
+	mok<-s*h*(d*2+1)+(sa*2*s)+(he*s)+(fe*2*s)
 finsubproceso
 Algoritmo calculadoradepagos
 	h<-0
@@ -43,23 +43,23 @@ Algoritmo calculadoradepagos
 		Si 5>=d Entonces
 			Escribir "Salario por hora"
 			leer s
-			Si s>=172 Entonces
+			Si s>=100 Entonces
 				Escribir "Trabajaste horas extra"
 				leer m
 				Si m="si" Entonces
 					Escribir "Cuantas horas trabajaste"
 					Leer he
-					Si 9>=he Entonces
+					Si 24>=he Entonces
 						Escribir "trabajaste en tu dia de descanso"
 						leer a3
 						Si a3="si" Entonces
 							Escribir "Cuantas horas trabajaste en tu dia de descanso"
 							leer sa
-							Si 8>=sa Entonces
+							Si 16>=sa Entonces
 								Escribir "trabajaste en dias festivos"
 								leer df
 								Si df="si" Entonces
-									fe=2
+									fe=1
 									Escribir "te pagaran ", res8(d,h,s,he,sa,fe)
 								SiNo
 									fe=0
@@ -70,7 +70,7 @@ Algoritmo calculadoradepagos
 							Escribir "trabajaste en dias festivos"
 							leer df
 							Si df="si" Entonces
-								fe=2
+								fe=1
 								Escribir "te pagaran ", res6(d,h,s,fe,he)
 							SiNo
 								fe=0
@@ -84,11 +84,11 @@ Algoritmo calculadoradepagos
 					Si a3="si" Entonces
 						Escribir "Cuantas horas trabajaste en tu dia de descanso"
 						leer sa
-						Si 8>=sa Entonces
+						Si 16>=sa Entonces
 							Escribir "trabajaste en dias festivos"
 							leer df
 							Si df="si" Entonces
-								fe=2
+								fe=1
 								Escribir "te pagaran ", res4(d,h,s,sa,fe)
 							SiNo
 								fe=0
@@ -99,7 +99,7 @@ Algoritmo calculadoradepagos
 						Escribir "trabajaste en dias festivos"
 						leer df
 						Si df="si" Entonces
-							fe=2
+							fe=1
 							Escribir "te pagaran ",res2(d,h,s,fe)
 						SiNo
 							fe=0
